@@ -62,7 +62,7 @@ export default function Contact() {
   }, [confetti]);
 
   return (
-    <section id="contact" className="section-padding adinkra-bg" style={{ background: '#020818' }}>
+    <section id="contact" className="section-padding adinkra-bg" style={{ background: '#0c1a3e' }}>
       <Confetti active={confetti} />
       <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}
@@ -196,13 +196,13 @@ export default function Contact() {
                     className="form-input"
                     style={{ cursor: 'pointer' }}
                   >
-                    <option value="" style={{ background: '#020818' }}>Type de projet</option>
-                    <option value="web" style={{ background: '#020818' }}>Développement Web</option>
-                    <option value="mobile" style={{ background: '#020818' }}>Application Mobile</option>
-                    <option value="secu" style={{ background: '#020818' }}>Cybersécurité</option>
-                    <option value="ia" style={{ background: '#020818' }}>Intelligence Artificielle</option>
-                    <option value="cloud" style={{ background: '#020818' }}>Cloud & Infrastructure</option>
-                    <option value="autre" style={{ background: '#020818' }}>Autre</option>
+                    <option value="" style={{ background: '#0c1a3e' }}>Type de projet</option>
+                    <option value="web" style={{ background: '#0c1a3e' }}>Développement Web</option>
+                    <option value="mobile" style={{ background: '#0c1a3e' }}>Application Mobile</option>
+                    <option value="secu" style={{ background: '#0c1a3e' }}>Cybersécurité</option>
+                    <option value="ia" style={{ background: '#0c1a3e' }}>Intelligence Artificielle</option>
+                    <option value="cloud" style={{ background: '#0c1a3e' }}>Cloud & Infrastructure</option>
+                    <option value="autre" style={{ background: '#0c1a3e' }}>Autre</option>
                   </select>
 
                   {/* Message */}

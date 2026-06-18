@@ -41,9 +41,9 @@ export default function Navbar() {
           alignItems: 'center',
           justifyContent: 'space-between',
           transition: 'all 0.4s ease',
-          background: scrolled ? 'rgba(2,8,24,0.85)' : 'transparent',
+          background: scrolled ? 'rgba(12,26,62,0.92)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(26,107,255,0.15)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(77,158,255,0.25)' : 'none',
         }}
       >
         {/* Logo */}

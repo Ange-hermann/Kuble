@@ -47,7 +47,7 @@ export default function Services() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section id="services" className="section-padding adinkra-bg" style={{ background: '#071228' }}>
+    <section id="services" className="section-padding adinkra-bg" style={{ background: '#0e1f4a' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}
         <motion.div

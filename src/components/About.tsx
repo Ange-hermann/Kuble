@@ -16,7 +16,7 @@ const team = [
 
 export default function About() {
   return (
-    <section id="apropos" className="section-padding" style={{ background: '#0a1a42' }}>
+    <section id="apropos" className="section-padding" style={{ background: '#101e50' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         {/* Header */}
         <motion.div

@@ -57,7 +57,7 @@ export default function Hero() {
       style={{
         minHeight: '100vh', position: 'relative',
         display: 'flex', alignItems: 'center',
-        background: 'linear-gradient(180deg, #07122e 0%, #0d1e50 60%, #07122e 100%)',
+        background: 'linear-gradient(180deg, #0e1f4a 0%, #152660 60%, #0e1f4a 100%)',
         overflow: 'hidden',
       }}
     >
