@@ -1,0 +1,179 @@
+import { motion } from 'framer-motion';
+import { ExternalLink, MessageCircle } from 'lucide-react';
+
+const LinkedInSvg = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+  </svg>
+);
+const XSvg = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
+  </svg>
+);
+const GithubSvg = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  </svg>
+);
+
+const links = {
+  Services: ['Développement Web', 'Applications Mobiles', 'Cybersécurité', 'Intelligence Artificielle', 'Cloud & Infrastructure'],
+  Entreprise: ['À propos', 'Nos projets', 'Notre équipe', 'Partenaires', 'Carrières'],
+  Légal: ['Mentions légales', 'Politique de confidentialité', 'CGU', 'Cookies'],
+};
+
+const socials = [
+  { icon: LinkedInSvg, label: 'LinkedIn', href: '#', color: '#0A66C2' },
+  { icon: XSvg, label: 'X / Twitter', href: '#', color: '#E8F4FF' },
+  { icon: GithubSvg, label: 'GitHub', href: '#', color: '#E8F4FF' },
+  { icon: MessageCircle, label: 'WhatsApp', href: '#', color: '#25D366' },
+];
+
+export default function Footer() {
+  const scrollTo = (id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <footer style={{
+      background: '#020818',
+      borderTop: '1px solid rgba(26,107,255,0.15)',
+      padding: '4rem 2rem 2rem',
+    }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        {/* Top row */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '3rem',
+          marginBottom: '3rem',
+        }}>
+          {/* Brand */}
+          <div style={{ gridColumn: 'span 1' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1rem' }}>
+              <motion.div
+                animate={{ rotateY: [0, 360] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
+                style={{
+                  width: 36, height: 36,
+                  background: 'linear-gradient(135deg, #1A6BFF, #00A3FF)',
+                  borderRadius: 6,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  boxShadow: '0 0 16px rgba(0,163,255,0.4)',
+                }}
+              >
+                <span style={{ color: '#fff', fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 14 }}>K</span>
+              </motion.div>
+              <span style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '1.4rem', color: '#E8F4FF' }}>
+                Kuble
+              </span>
+            </div>
+            <p style={{ fontFamily: 'JetBrains Mono', fontSize: '0.72rem', color: '#00A3FF', letterSpacing: '0.12em', marginBottom: '1rem' }}>
+              CONNECTER · ORCHESTRER · PROPULSER
+            </p>
+            <p style={{ fontFamily: 'Inter', fontSize: '0.85rem', color: 'rgba(232,244,255,0.55)', lineHeight: 1.7, maxWidth: 240 }}>
+              Technologie Made in Africa — au service de la transformation numérique du continent.
+            </p>
+
+            {/* Socials */}
+            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem' }}>
+              {socials.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <motion.a
+                    key={s.label}
+                    href={s.href}
+                    aria-label={s.label}
+                    whileHover={{ scale: 1.15, color: s.color }}
+                    style={{
+                      width: 38, height: 38, borderRadius: 8,
+                      background: 'rgba(26,107,255,0.08)',
+                      border: '1px solid rgba(26,107,255,0.2)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      color: 'rgba(232,244,255,0.6)',
+                      transition: 'all 0.25s',
+                      cursor: 'pointer', textDecoration: 'none',
+                    }}
+                  >
+                    <Icon size={17} />
+                  </motion.a>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Links */}
+          {Object.entries(links).map(([category, items]) => (
+            <div key={category}>
+              <h4 style={{
+                fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '0.9rem',
+                color: '#E8F4FF', marginBottom: '1rem',
+                paddingBottom: '0.5rem',
+                borderBottom: '1px solid rgba(26,107,255,0.2)',
+              }}>
+                {category}
+              </h4>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                {items.map((item) => (
+                  <li key={item}>
+                    <a
+                      href="#"
+                      onClick={(e) => { e.preventDefault(); scrollTo('#hero'); }}
+                      style={{
+                        fontFamily: 'Inter', fontSize: '0.85rem',
+                        color: 'rgba(232,244,255,0.55)',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s',
+                        display: 'inline-flex', alignItems: 'center', gap: 4,
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = '#00A3FF')}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(232,244,255,0.55)')}
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Divider */}
+        <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(26,107,255,0.3), rgba(212,175,55,0.3), transparent)', marginBottom: '2rem' }} />
+
+        {/* Bottom row */}
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          flexWrap: 'wrap', gap: '1rem',
+        }}>
+          <span style={{ fontFamily: 'Inter', fontSize: '0.82rem', color: 'rgba(232,244,255,0.4)' }}>
+            © 2025 Kuble — Tous droits réservés
+          </span>
+          <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.78rem', color: 'rgba(232,244,255,0.4)' }}>
+            Made with <span style={{ color: '#1A6BFF' }}>💙</span> in Abidjan
+          </span>
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            {['Mentions légales', 'Confidentialité'].map((item) => (
+              <a
+                key={item}
+                href="#"
+                style={{
+                  fontFamily: 'Inter', fontSize: '0.78rem',
+                  color: 'rgba(232,244,255,0.4)',
+                  textDecoration: 'none',
+                  display: 'flex', alignItems: 'center', gap: 4,
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#00A3FF')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(232,244,255,0.4)')}
+              >
+                {item} <ExternalLink size={10} />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
