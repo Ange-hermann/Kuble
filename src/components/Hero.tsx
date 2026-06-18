@@ -40,6 +40,8 @@ export default function Hero() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) return;
     const handleParallax = () => {
       if (scrollRef.current) {
         scrollRef.current.style.transform = `translateY(${window.scrollY * 0.3}px)`;
@@ -194,6 +196,7 @@ export default function Hero() {
       <style>{`
         @media (max-width: 768px) {
           .africa-map-container { display: none !important; }
+          .star { display: none !important; }
         }
       `}</style>
     </section>

@@ -248,6 +248,32 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); }
   border-radius: 2px;
 }
 
+/* ── Mobile stability ── */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Disable heavy animations on mobile */
+  .float-anim { animation: none !important; }
+  .pulse-ring { animation: none !important; }
+  .star { display: none !important; }
+  .custom-cursor { display: none !important; }
+
+  /* Prevent 3D transforms from causing layout shift */
+  canvas { max-width: 100% !important; }
+
+  /* Fix sections overflow */
+  section { overflow-x: hidden !important; }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
 /* ── Custom cursor ── */
 .custom-cursor {
   width: 20px; height: 20px;
