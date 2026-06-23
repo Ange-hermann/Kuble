@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { Send, MapPin, Mail, Phone, CheckCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+
+const EMAILJS_SERVICE  = 'service_310v7f6';
+const EMAILJS_TEMPLATE = 'template_3peinso';
+const EMAILJS_KEY      = 'XJf2StRSjxM5ILhxr';
 
 type FormData = {
   nom: string;
@@ -48,8 +53,14 @@ export default function Contact() {
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>();
 
-  const onSubmit = async (_data: FormData) => {
-    await new Promise((r) => setTimeout(r, 1000));
+  const onSubmit = async (data: FormData) => {
+    await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+      nom:        data.nom,
+      email:      data.email,
+      telephone:  data.telephone || 'Non renseigné',
+      typeProjet: data.typeProjet || 'Non précisé',
+      message:    data.message,
+    }, EMAILJS_KEY);
     setSubmitted(true);
     setConfetti(true);
   };
@@ -192,7 +203,7 @@ export default function Contact() {
 
                   {/* Type de projet */}
                   <select
-                    {...register('typeProjet', { required: true })}
+                    {...register('typeProjet')}
                     className="form-input"
                     style={{ cursor: 'pointer' }}
                   >
@@ -208,7 +219,7 @@ export default function Contact() {
                   {/* Message */}
                   <div>
                     <textarea
-                      {...register('message', { required: 'Le message est requis', minLength: { value: 20, message: 'Minimum 20 caractères' } })}
+                      {...register('message', { required: 'Le message est requis', minLength: { value: 5, message: 'Minimum 5 caractères' } })}
                       placeholder="Décrivez votre projet..."
                       rows={5}
                       className={`form-input ${errors.message ? 'error' : ''}`}
@@ -261,8 +272,8 @@ export default function Contact() {
             </div>
 
             {[
-              { icon: MapPin, label: 'Adresse', value: 'Plateau, Abidjan, Côte d\'Ivoire', color: '#D4AF37', href: null },
-              { icon: Mail,   label: 'Email',   value: 'contact@kuble.ci',                 color: '#00A3FF', href: 'mailto:contact@kuble.ci' },
+              { icon: MapPin, label: 'Adresse', value: 'Cocody, Abidjan, Côte d\'Ivoire', color: '#D4AF37', href: null },
+              { icon: Mail,   label: 'Email',   value: 'kubleai@gmail.com',                color: '#00A3FF', href: 'mailto:kubleai@gmail.com' },
             ].map((info) => {
               const Icon = info.icon;
               return (
