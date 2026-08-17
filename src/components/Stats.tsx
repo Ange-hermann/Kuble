@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useCountUp } from '../hooks/useCountUp';
+import { COLORS, FONTS } from '../theme/colors';
 
 const stats = [
   { value: 50, suffix: '+', label: 'Projets livrés' },
@@ -23,17 +24,17 @@ function StatItem({ value, suffix, label, delay }: { value: number; suffix: stri
       }}
     >
       <span style={{
-        fontFamily: 'Space Grotesk', fontWeight: 700,
+        fontFamily: FONTS.display, fontWeight: 700,
         fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-        color: '#00A3FF',
-        textShadow: '0 0 20px rgba(0,163,255,0.5)',
+        color: COLORS.cyan,
+        textShadow: `0 0 20px ${COLORS.cyanGlow}`,
         lineHeight: 1,
       }}>
         {count}{suffix}
       </span>
       <span style={{
-        fontFamily: 'Inter', fontSize: '0.95rem',
-        color: 'rgba(232,244,255,0.65)', textAlign: 'center',
+        fontFamily: FONTS.body, fontSize: '0.95rem',
+        color: COLORS.whiteDim, textAlign: 'center',
       }}>
         {label}
       </span>
@@ -44,10 +45,10 @@ function StatItem({ value, suffix, label, delay }: { value: number; suffix: stri
 export default function Stats() {
   return (
     <section id="stats" style={{
-      background: '#050F2C',
+      background: `linear-gradient(180deg, ${COLORS.navyDeep} 0%, ${COLORS.navyDark} 100%)`,
       padding: '4rem 2rem',
-      borderTop: '1px solid rgba(26,107,255,0.15)',
-      borderBottom: '1px solid rgba(26,107,255,0.15)',
+      borderTop: `1px solid rgba(27,111,224,0.15)`,
+      borderBottom: `1px solid rgba(27,111,224,0.15)`,
     }}>
       <div style={{
         maxWidth: 1100, margin: '0 auto',
@@ -60,7 +61,7 @@ export default function Stats() {
             {i < stats.length - 1 && (
               <div style={{
                 width: 1, height: 60,
-                background: 'linear-gradient(180deg, transparent, #D4AF37, transparent)',
+                background: `linear-gradient(180deg, transparent, ${COLORS.cyan}, transparent)`,
                 margin: '0 1rem',
                 flexShrink: 0,
               }} className="stat-divider" />

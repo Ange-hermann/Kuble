@@ -142,7 +142,7 @@ function OrbitalRings() {
           <bufferGeometry>
             <bufferAttribute attach="attributes-position" args={[rp, 3]} />
           </bufferGeometry>
-          <pointsMaterial color="#1A6BFF" size={0.025} transparent opacity={0.7}
+          <pointsMaterial color="#1B6FE0" size={0.025} transparent opacity={0.7}
             sizeAttenuation blending={THREE.AdditiveBlending} depthWrite={false} />
         </points>
       </group>
@@ -288,7 +288,7 @@ function NetworkLines() {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[lineSegments, 3]} />
         </bufferGeometry>
-        <lineBasicMaterial color="#1A6BFF" transparent opacity={0.25}
+        <lineBasicMaterial color="#1B6FE0" transparent opacity={0.25}
           blending={THREE.AdditiveBlending} depthWrite={false} />
       </lineSegments>
       {/* Paquets de données */}
@@ -361,7 +361,7 @@ function HoloGrid() {
 
   return (
     <lineSegments geometry={geo}>
-      <lineBasicMaterial color="#1A6BFF" transparent opacity={0.07}
+      <lineBasicMaterial color="#1B6FE0" transparent opacity={0.07}
         blending={THREE.AdditiveBlending} depthWrite={false} />
     </lineSegments>
   );

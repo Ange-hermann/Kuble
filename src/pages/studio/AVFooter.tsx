@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-const G = '#e8c84a';
-const BLUE = '#4d9eff';
+import { Link } from 'react-router-dom';
+import { AV, AV_FONTS } from './avTheme';
 
 const socials = [
   { svg: <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>, href: '#', label: 'Instagram' },
@@ -15,24 +15,30 @@ export default function AVFooter() {
   const [subbed, setSubbed] = useState(false);
 
   return (
-    <footer style={{ background: '#06102a', borderTop: `2px solid ${BLUE}44` }}>
+    <footer style={{ background: AV.bgAlt, borderTop: `2px solid ${AV.glassBorder}` }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '4rem 2rem 2rem' }}>
-        {/* 4 colonnes */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '3rem', marginBottom: '3rem' }} className="av-footer-grid">
           {/* Logo + slogan */}
           <div>
-            <div style={{ fontFamily: 'Space Grotesk', fontWeight: 800, fontSize: '1.5rem', marginBottom: 10 }}>
-              <span style={{ background: `linear-gradient(135deg, #fff, ${BLUE}, ${G})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>KUBLE</span>
-              <span style={{ color: G }}> Studio</span>
+            <div style={{ fontFamily: AV_FONTS.display, fontWeight: 800, fontSize: '1.5rem', marginBottom: 10 }}>
+              <span style={{ color: AV.text }}>KU</span>
+              <span style={{ color: AV.primary }}>BLE</span>
+              <span style={{ color: AV.coral }}> Studio</span>
             </div>
-            <p style={{ fontFamily: 'Inter', fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+            <p style={{ fontFamily: AV_FONTS.body, fontSize: '0.85rem', color: AV.textDim, lineHeight: 1.7, marginBottom: '1.5rem' }}>
               Votre agence audiovisuelle de référence en Côte d'Ivoire.
             </p>
             <div style={{ display: 'flex', gap: 10 }}>
               {socials.map(s => (
                 <motion.a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                  whileHover={{ scale: 1.15 }}
-                  style={{ width: 36, height: 36, borderRadius: '50%', background: 'rgba(80,160,255,0.1)', border: `1px solid ${BLUE}25`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>
+                  whileHover={{ scale: 1.15, y: -2 }}
+                  style={{
+                    width: 36, height: 36, borderRadius: '50%',
+                    background: AV.white, border: `1px solid ${AV.glassBorder}`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: AV.primary, textDecoration: 'none',
+                    boxShadow: AV.shadow,
+                  }}>
                   {s.svg}
                 </motion.a>
               ))}
@@ -41,40 +47,55 @@ export default function AVFooter() {
 
           {/* Services */}
           <div>
-            <h4 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, color: '#fff', marginBottom: '1rem', fontSize: '0.95rem' }}>Services</h4>
+            <h4 style={{ fontFamily: AV_FONTS.display, fontWeight: 700, color: AV.text, marginBottom: '1rem', fontSize: '0.95rem' }}>Services</h4>
             {['Production Vidéo', 'Couverture Médiatique', 'Photographie', 'Gestion Réseaux', 'Production Audio', 'Publicité & Spots'].map(s => (
-              <a key={s} href="#av-services" onClick={e => { e.preventDefault(); document.querySelector('#av-services')?.scrollIntoView({ behavior: 'smooth' }); }}
-                style={{ display: 'block', fontFamily: 'Inter', fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', textDecoration: 'none', marginBottom: 8, transition: 'color 0.2s' }}
-                onMouseEnter={e => (e.currentTarget.style.color = G)}
-                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.5)')}>{s}</a>
+              <Link key={s} to="/audiovisuel/services"
+                style={{ display: 'block', fontFamily: AV_FONTS.body, fontSize: '0.85rem', color: AV.textDim, textDecoration: 'none', marginBottom: 8, transition: 'color 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = AV.primary)}
+                onMouseLeave={e => (e.currentTarget.style.color = AV.textDim)}>{s}</Link>
             ))}
           </div>
 
           {/* Liens rapides */}
           <div>
-            <h4 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, color: '#fff', marginBottom: '1rem', fontSize: '0.95rem' }}>Liens rapides</h4>
-            {[['À propos', '#av-process'], ['Portfolio', '#av-portfolio'], ['Blog', '#av-blog'], ['Contact', '#av-contact']].map(([label, href]) => (
-              <a key={label} href={href} onClick={e => { e.preventDefault(); document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' }); }}
-                style={{ display: 'block', fontFamily: 'Inter', fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', textDecoration: 'none', marginBottom: 8, transition: 'color 0.2s' }}
-                onMouseEnter={e => (e.currentTarget.style.color = G)}
-                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.5)')}>{label}</a>
+            <h4 style={{ fontFamily: AV_FONTS.display, fontWeight: 700, color: AV.text, marginBottom: '1rem', fontSize: '0.95rem' }}>Liens rapides</h4>
+            {[
+              { label: 'À propos', to: '/audiovisuel/a-propos' },
+              { label: 'Portfolio', to: '/audiovisuel/portfolio' },
+              { label: 'Blog', to: '/audiovisuel/blog' },
+              { label: 'Contact', to: '/audiovisuel/contact' },
+            ].map(l => (
+              <Link key={l.label} to={l.to}
+                style={{ display: 'block', fontFamily: AV_FONTS.body, fontSize: '0.85rem', color: AV.textDim, textDecoration: 'none', marginBottom: 8, transition: 'color 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = AV.primary)}
+                onMouseLeave={e => (e.currentTarget.style.color = AV.textDim)}>{l.label}</Link>
             ))}
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, color: '#fff', marginBottom: '1rem', fontSize: '0.95rem' }}>Newsletter</h4>
-            <p style={{ fontFamily: 'Inter', fontSize: '0.82rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, marginBottom: '1rem' }}>
+            <h4 style={{ fontFamily: AV_FONTS.display, fontWeight: 700, color: AV.text, marginBottom: '1rem', fontSize: '0.95rem' }}>Newsletter</h4>
+            <p style={{ fontFamily: AV_FONTS.body, fontSize: '0.82rem', color: AV.textDim, lineHeight: 1.6, marginBottom: '1rem' }}>
               Recevez nos conseils et actualités chaque semaine.
             </p>
             {subbed ? (
-              <p style={{ fontFamily: 'Inter', fontSize: '0.85rem', color: G }}>✓ Vous êtes abonné !</p>
+              <p style={{ fontFamily: AV_FONTS.body, fontSize: '0.85rem', color: AV.turquoise, fontWeight: 600 }}>✓ Vous êtes abonné !</p>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <input value={email} onChange={e => setEmail(e.target.value)} placeholder="votre@email.com"
-                  style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 8, padding: '0.6rem 0.9rem', color: '#fff', fontFamily: 'Inter', fontSize: '0.85rem', outline: 'none' }} />
+                  style={{
+                    background: AV.white, border: `1px solid ${AV.glassBorder}`, borderRadius: 10,
+                    padding: '0.6rem 0.9rem', color: AV.text, fontFamily: AV_FONTS.body, fontSize: '0.85rem', outline: 'none',
+                    transition: 'border-color 0.3s',
+                  }}
+                  onFocus={e => e.currentTarget.style.borderColor = AV.primary}
+                  onBlur={e => e.currentTarget.style.borderColor = AV.glassBorder} />
                 <motion.button whileHover={{ scale: 1.03 }} onClick={() => email && setSubbed(true)}
-                  style={{ background: `linear-gradient(135deg,${BLUE},${G})`, color: '#0c1a3e', border: 'none', borderRadius: 8, padding: '0.6rem', fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer' }}>
+                  style={{
+                    background: AV.gradient, color: '#fff', border: 'none', borderRadius: 10,
+                    padding: '0.6rem', fontFamily: AV_FONTS.display, fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer',
+                    boxShadow: `0 4px 16px ${AV.primary}33`,
+                  }}>
                   S'abonner
                 </motion.button>
               </div>
@@ -83,15 +104,15 @@ export default function AVFooter() {
         </div>
 
         {/* Bas */}
-        <div style={{ borderTop: `1px solid ${BLUE}22`, paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-          <span style={{ fontFamily: 'Inter', fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)' }}>
+        <div style={{ borderTop: `1px solid ${AV.glassBorder}`, paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+          <span style={{ fontFamily: AV_FONTS.body, fontSize: '0.8rem', color: AV.textFaint }}>
             © 2025 Kuble Studio — Tous droits réservés · Made with 🎬 in Abidjan
           </span>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
             {['Mentions légales', 'Politique de confidentialité'].map(l => (
-              <a key={l} href="#" style={{ fontFamily: 'Inter', fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', textDecoration: 'none' }}
-                onMouseEnter={e => (e.currentTarget.style.color = G)}
-                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.3)')}>{l}</a>
+              <a key={l} href="#" style={{ fontFamily: AV_FONTS.body, fontSize: '0.75rem', color: AV.textFaint, textDecoration: 'none' }}
+                onMouseEnter={e => (e.currentTarget.style.color = AV.primary)}
+                onMouseLeave={e => (e.currentTarget.style.color = AV.textFaint)}>{l}</a>
             ))}
           </div>
         </div>

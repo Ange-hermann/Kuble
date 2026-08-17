@@ -25,7 +25,7 @@ const links = {
 };
 
 const socials = [
-  { icon: TikTokSvg,    label: 'TikTok',    href: 'https://www.tiktok.com/@kuble.ai?_r=1&_t=ZN-97S9Daj4eIg', color: '#E8F4FF' },
+  { icon: TikTokSvg,    label: 'TikTok',    href: 'https://www.tiktok.com/@kuble.ai?_r=1&_t=ZN-97S9Daj4eIg', color: '#5BC8F2' },
   { icon: FacebookSvg,  label: 'Facebook',  href: 'https://www.facebook.com/share/17cHPhvkhS/?mibextid=wwXIfr', color: '#1877F2' },
   { icon: LinkedInSvg,  label: 'LinkedIn',  href: '#', color: '#0A66C2' },
   { icon: MessageCircle,label: 'WhatsApp',  href: 'https://wa.me/2250788043360', color: '#25D366' },
@@ -38,8 +38,8 @@ export default function Footer() {
 
   return (
     <footer style={{
-      background: '#020818',
-      borderTop: '1px solid rgba(26,107,255,0.15)',
+      background: '#060D2E',
+      borderTop: '1px solid rgba(27,111,224,0.15)',
       padding: '4rem 2rem 2rem',
     }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
@@ -58,22 +58,22 @@ export default function Footer() {
                 transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
                 style={{
                   width: 36, height: 36,
-                  background: 'linear-gradient(135deg, #1A6BFF, #00A3FF)',
+                  background: 'linear-gradient(135deg, #1B6FE0, #5BC8F2)',
                   borderRadius: 6,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  boxShadow: '0 0 16px rgba(0,163,255,0.4)',
+                  boxShadow: '0 0 16px rgba(91,200,242,0.4)',
                 }}
               >
                 <span style={{ color: '#fff', fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 14 }}>K</span>
               </motion.div>
-              <span style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '1.4rem', color: '#E8F4FF' }}>
+              <span style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '1.4rem', color: '#FFFFFF' }}>
                 Kuble
               </span>
             </div>
-            <p style={{ fontFamily: 'JetBrains Mono', fontSize: '0.72rem', color: '#00A3FF', letterSpacing: '0.12em', marginBottom: '1rem' }}>
+            <p style={{ fontFamily: 'JetBrains Mono', fontSize: '0.72rem', color: '#5BC8F2', letterSpacing: '0.12em', marginBottom: '1rem' }}>
               CONNECTER · ORCHESTRER · PROPULSER
             </p>
-            <p style={{ fontFamily: 'Inter', fontSize: '0.85rem', color: 'rgba(232,244,255,0.55)', lineHeight: 1.7, maxWidth: 240 }}>
+            <p style={{ fontFamily: 'Inter', fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.7, maxWidth: 240 }}>
               Technologie Made in Africa — au service de la transformation numérique du continent.
             </p>
 
@@ -89,10 +89,10 @@ export default function Footer() {
                     whileHover={{ scale: 1.15, color: s.color }}
                     style={{
                       width: 38, height: 38, borderRadius: 8,
-                      background: 'rgba(26,107,255,0.08)',
-                      border: '1px solid rgba(26,107,255,0.2)',
+                      background: 'rgba(27,111,224,0.08)',
+                      border: '1px solid rgba(27,111,224,0.2)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: 'rgba(232,244,255,0.6)',
+                      color: 'rgba(255,255,255,0.6)',
                       transition: 'all 0.25s',
                       cursor: 'pointer', textDecoration: 'none',
                     }}
@@ -109,9 +109,9 @@ export default function Footer() {
             <div key={category}>
               <h4 style={{
                 fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '0.9rem',
-                color: '#E8F4FF', marginBottom: '1rem',
+                color: '#FFFFFF', marginBottom: '1rem',
                 paddingBottom: '0.5rem',
-                borderBottom: '1px solid rgba(26,107,255,0.2)',
+                borderBottom: '1px solid rgba(27,111,224,0.2)',
               }}>
                 {category}
               </h4>
@@ -123,13 +123,13 @@ export default function Footer() {
                       onClick={(e) => { e.preventDefault(); scrollTo('#hero'); }}
                       style={{
                         fontFamily: 'Inter', fontSize: '0.85rem',
-                        color: 'rgba(232,244,255,0.55)',
+                        color: 'rgba(255,255,255,0.55)',
                         textDecoration: 'none',
                         transition: 'color 0.2s',
                         display: 'inline-flex', alignItems: 'center', gap: 4,
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = '#00A3FF')}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(232,244,255,0.55)')}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = '#5BC8F2')}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}
                     >
                       {item}
                     </a>
@@ -141,18 +141,18 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(26,107,255,0.3), rgba(212,175,55,0.3), transparent)', marginBottom: '2rem' }} />
+        <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(27,111,224,0.3), rgba(91,200,242,0.3), transparent)', marginBottom: '2rem' }} />
 
         {/* Bottom row */}
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           flexWrap: 'wrap', gap: '1rem',
         }}>
-          <span style={{ fontFamily: 'Inter', fontSize: '0.82rem', color: 'rgba(232,244,255,0.4)' }}>
+          <span style={{ fontFamily: 'Inter', fontSize: '0.82rem', color: 'rgba(255,255,255,0.4)' }}>
             © 2025 Kuble — Tous droits réservés
           </span>
-          <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.78rem', color: 'rgba(232,244,255,0.4)' }}>
-            Made with <span style={{ color: '#1A6BFF' }}>💙</span> in Abidjan
+          <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.78rem', color: 'rgba(255,255,255,0.4)' }}>
+            Made with <span style={{ color: '#1B6FE0' }}>💙</span> in Abidjan
           </span>
           <div style={{ display: 'flex', gap: '1rem' }}>
             {['Mentions légales', 'Confidentialité'].map((item) => (
@@ -161,12 +161,12 @@ export default function Footer() {
                 href="#"
                 style={{
                   fontFamily: 'Inter', fontSize: '0.78rem',
-                  color: 'rgba(232,244,255,0.4)',
+                  color: 'rgba(255,255,255,0.4)',
                   textDecoration: 'none',
                   display: 'flex', alignItems: 'center', gap: 4,
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#00A3FF')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(232,244,255,0.4)')}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#5BC8F2')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.4)')}
               >
                 {item} <ExternalLink size={10} />
               </a>

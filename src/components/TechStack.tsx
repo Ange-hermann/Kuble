@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { COLORS, FONTS } from '../theme/colors';
 
 const row1 = [
   { name: 'React', emoji: '⚛️' },
@@ -36,20 +37,20 @@ function TechBadge({ name, emoji }: { name: string; emoji: string }) {
         display: 'flex', alignItems: 'center', gap: '0.6rem',
         padding: '0.6rem 1.2rem',
         borderRadius: 10,
-        background: hovered ? 'rgba(0,163,255,0.12)' : 'rgba(26,107,255,0.06)',
-        border: `1px solid ${hovered ? 'rgba(0,163,255,0.5)' : 'rgba(26,107,255,0.2)'}`,
+        background: hovered ? 'rgba(91,200,242,0.12)' : 'rgba(27,111,224,0.04)',
+        border: `1px solid ${hovered ? 'rgba(91,200,242,0.5)' : 'rgba(10,22,80,0.08)'}`,
         backdropFilter: 'blur(8px)',
         cursor: 'default',
         transition: 'all 0.25s',
         whiteSpace: 'nowrap',
         margin: '0 0.4rem',
-        boxShadow: hovered ? '0 0 16px rgba(0,163,255,0.25)' : 'none',
+        boxShadow: hovered ? '0 0 16px rgba(91,200,242,0.25)' : 'none',
       }}
     >
       <span style={{ fontSize: '1.1rem' }}>{emoji}</span>
       <span style={{
         fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '0.85rem',
-        color: hovered ? '#00A3FF' : 'rgba(232,244,255,0.8)',
+        color: hovered ? '#5BC8F2' : 'rgba(10,22,80,0.7)',
         transition: 'color 0.25s',
       }}>
         {name}
@@ -63,19 +64,19 @@ export default function TechStack() {
   const doubledRow2 = [...row2, ...row2];
 
   return (
-    <section className="section-padding" style={{ background: '#050F2C', overflow: 'hidden' }}>
+    <section style={{ padding: '6rem 0', background: 'linear-gradient(180deg, #F0F5FF 0%, #E8F0FE 100%)', overflow: 'hidden' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: '3rem' }}
+          style={{ textAlign: 'center', marginBottom: '3rem', padding: '0 2rem' }}
         >
-          <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.8rem', color: '#00A3FF', letterSpacing: '0.2em', display: 'block', marginBottom: 12 }}>
+          <span style={{ fontFamily: FONTS.mono, fontSize: '0.78rem', color: COLORS.electric, letterSpacing: '0.2em', display: 'block', marginBottom: 12 }}>
             // TECHNOLOGIES
           </span>
-          <h2 className="section-title">Notre Stack Technologique</h2>
-          <p className="section-subtitle" style={{ margin: '0 auto' }}>
+          <h2 style={{ fontFamily: FONTS.display, fontWeight: 800, fontSize: 'clamp(2rem, 4vw, 3rem)', color: COLORS.navyDeep, letterSpacing: '-0.02em' }}>Notre Stack Technologique</h2>
+          <p style={{ fontFamily: FONTS.body, fontSize: '1.05rem', color: 'rgba(10,22,80,0.55)', maxWidth: 500, margin: '1rem auto 0' }}>
             Les meilleurs outils du marché, maîtrisés par nos experts.
           </p>
         </motion.div>

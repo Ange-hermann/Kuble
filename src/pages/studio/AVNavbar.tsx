@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, ArrowLeft } from 'lucide-react';
+import { AV, AV_FONTS } from './avTheme';
 
 const navLinks = [
-  { label: 'Accueil', href: '#av-hero' },
-  { label: 'Services', href: '#av-services' },
-  { label: 'Réalisations', href: '#av-portfolio' },
-  { label: 'À propos', href: '#av-process' },
-  { label: 'Contact', href: '#av-contact' },
+  { label: 'Accueil', to: '/audiovisuel' },
+  { label: 'À propos', to: '/audiovisuel/a-propos' },
+  { label: 'Services', to: '/audiovisuel/services' },
+  { label: 'Portfolio', to: '/audiovisuel/portfolio' },
+  { label: 'Blog', to: '/audiovisuel/blog' },
+  { label: 'Contact', to: '/audiovisuel/contact' },
 ];
-
-const G = '#e8c84a';
-const BLUE = '#4d9eff';
 
 export default function AVNavbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,10 +23,8 @@ export default function AVNavbar() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  const go = (href: string) => {
-    setOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const { pathname } = useLocation();
+  const isActive = (to: string) => pathname === to;
 
   return (
     <>
@@ -37,36 +34,35 @@ export default function AVNavbar() {
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
           height: 70, padding: '0 2.5rem',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          background: scrolled ? 'rgba(12,26,62,0.97)' : 'transparent',
+          background: scrolled ? 'rgba(255,255,255,0.9)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? `1px solid ${BLUE}44` : 'none',
+          borderBottom: scrolled ? `1px solid ${AV.glassBorder}` : 'none',
           transition: 'all 0.4s ease',
         }}
       >
-        {/* Logo + LIVE */}
+        {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <a href="#av-hero" onClick={e => { e.preventDefault(); go('#av-hero'); }}
+          <Link to="/audiovisuel"
             style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span style={{ fontFamily: 'Space Grotesk', fontWeight: 800, fontSize: '1.4rem', display: 'flex', alignItems: 'baseline', gap: 0 }}>
-              <span style={{ color: '#fff' }}>KU</span><span style={{ color: BLUE }}>BLE</span><span style={{ color: G }}> Studio</span>
+            <span style={{ fontFamily: AV_FONTS.display, fontWeight: 800, fontSize: '1.4rem', display: 'flex', alignItems: 'baseline', gap: 0 }}>
+              <span style={{ color: AV.text }}>KU</span><span style={{ color: AV.primary }}>BLE</span><span style={{ color: AV.coral, fontSize: '1rem' }}> Studio</span>
             </span>
-          </a>
-          {/* LIVE indicator */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-            <motion.div animate={{ opacity: [1, 0.2, 1] }} transition={{ duration: 1.2, repeat: Infinity }}
-              style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff3b3b', boxShadow: '0 0 8px #ff3b3b' }} />
-            <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.65rem', color: '#ff3b3b', letterSpacing: '0.15em', fontWeight: 700 }}>LIVE</span>
-          </div>
+          </Link>
         </div>
 
         {/* Desktop links */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }} className="av-desktop-nav">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem' }} className="av-desktop-nav">
           {navLinks.map(l => (
-            <a key={l.label} href={l.href} onClick={e => { e.preventDefault(); go(l.href); }}
-              style={{ fontFamily: 'Inter', fontSize: '0.9rem', color: 'rgba(255,255,255,0.8)', textDecoration: 'none', transition: 'color 0.2s' }}
-              onMouseEnter={e => (e.currentTarget.style.color = G)}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.8)')}
-            >{l.label}</a>
+            <Link key={l.label} to={l.to}
+              style={{
+                fontFamily: AV_FONTS.body, fontSize: '0.88rem', fontWeight: 500,
+                color: isActive(l.to) ? AV.primary : AV.textSoft,
+                textDecoration: 'none', transition: 'color 0.2s',
+                position: 'relative',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = AV.primary)}
+              onMouseLeave={e => { if (!isActive(l.to)) e.currentTarget.style.color = AV.textSoft; }}
+            >{l.label}</Link>
           ))}
         </div>
 
@@ -75,25 +71,30 @@ export default function AVNavbar() {
           <Link to="/" className="av-desktop-nav"
             style={{
               display: 'flex', alignItems: 'center', gap: 5,
-              color: 'rgba(255,255,255,0.6)', textDecoration: 'none',
-              fontFamily: 'Inter', fontSize: '0.82rem', border: '1px solid rgba(255,255,255,0.18)',
-              borderRadius: 8, padding: '0.45rem 0.9rem', transition: 'all 0.2s',
+              color: AV.textDim, textDecoration: 'none',
+              fontFamily: AV_FONTS.body, fontSize: '0.82rem',
+              border: `1px solid ${AV.glassBorder}`, borderRadius: 8,
+              padding: '0.45rem 0.9rem', transition: 'all 0.2s',
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#fff'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.4)'; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)'; }}>
-            <ArrowLeft size={13} /> Retour au site
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = AV.text; (e.currentTarget as HTMLElement).style.borderColor = AV.primary + '40'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = AV.textDim; (e.currentTarget as HTMLElement).style.borderColor = AV.glassBorder; }}>
+            <ArrowLeft size={13} /> Retour
           </Link>
-          <motion.a href="#av-contact" onClick={e => { e.preventDefault(); go('#av-contact'); }}
-            whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}
+          <Link to="/audiovisuel/contact" className="av-desktop-nav"
             style={{
-              background: `linear-gradient(135deg, ${BLUE}, ${G})`, color: '#0c1a3e', padding: '0.5rem 1.3rem',
-              borderRadius: 8, fontFamily: 'Space Grotesk', fontWeight: 700,
-              fontSize: '0.85rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6,
-            }} className="av-desktop-nav">
+              background: AV.gradient, color: '#fff',
+              padding: '0.5rem 1.3rem', borderRadius: 10,
+              fontFamily: AV_FONTS.display, fontWeight: 700, fontSize: '0.85rem',
+              textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6,
+              boxShadow: `0 4px 16px ${AV.primary}33`,
+              transition: 'all 0.3s',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 24px ${AV.primary}44`; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 16px ${AV.primary}33`; }}>
             <Phone size={14} /> Démarrer un projet
-          </motion.a>
+          </Link>
           <button onClick={() => setOpen(!open)} className="av-mobile-only"
-            style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#fff', padding: 4 }}>
+            style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: AV.text, padding: 4 }}>
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -105,23 +106,33 @@ export default function AVNavbar() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             style={{
               position: 'fixed', inset: 0, zIndex: 199,
-              background: 'rgba(12,26,62,0.98)', backdropFilter: 'blur(20px)', border: `1px solid ${BLUE}22`,
-              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem',
+              background: 'rgba(255,255,255,0.98)', backdropFilter: 'blur(20px)',
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.75rem',
             }}>
             {navLinks.map((l, i) => (
-              <motion.a key={l.label} href={l.href}
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.07 }}
-                onClick={e => { e.preventDefault(); go(l.href); }}
-                style={{ fontFamily: 'Space Grotesk', fontSize: '1.8rem', fontWeight: 700, color: '#fff', textDecoration: 'none' }}
-                onMouseEnter={e => (e.currentTarget.style.color = G)}
-                onMouseLeave={e => (e.currentTarget.style.color = '#fff')}
-              >{l.label}</motion.a>
+              <motion.div key={l.label}
+                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.07 }}>
+                <Link to={l.to} onClick={() => setOpen(false)}
+                  style={{
+                    fontFamily: AV_FONTS.display, fontSize: '1.6rem', fontWeight: 700,
+                    color: isActive(l.to) ? AV.primary : AV.text, textDecoration: 'none',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = AV.primary)}
+                  onMouseLeave={e => { if (!isActive(l.to)) e.currentTarget.style.color = AV.text; }}
+                >{l.label}</Link>
+              </motion.div>
             ))}
-            <motion.a href="#av-contact" onClick={e => { e.preventDefault(); go('#av-contact'); }}
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-              style={{ background: `linear-gradient(135deg, ${BLUE}, ${G})`, color: '#0c1a3e', padding: '0.75rem 2rem', borderRadius: 10, fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '1rem', textDecoration: 'none', marginTop: 8 }}>
-              Démarrer un projet
-            </motion.a>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+              <Link to="/audiovisuel/contact" onClick={() => setOpen(false)}
+                style={{
+                  background: AV.gradient, color: '#fff', padding: '0.75rem 2rem',
+                  borderRadius: 12, fontFamily: AV_FONTS.display, fontWeight: 700, fontSize: '1rem',
+                  textDecoration: 'none', marginTop: 8, display: 'inline-flex', alignItems: 'center', gap: 6,
+                  boxShadow: `0 8px 24px ${AV.primary}33`,
+                }}>
+                <Phone size={16} /> Démarrer un projet
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

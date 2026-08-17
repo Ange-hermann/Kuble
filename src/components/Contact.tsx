@@ -21,7 +21,7 @@ function Confetti({ active }: { active: boolean }) {
   const pieces = Array.from({ length: 60 }, (_, i) => ({
     id: i,
     left: `${Math.random() * 100}vw`,
-    color: ['#1A6BFF', '#00A3FF', '#D4AF37', '#fff', '#00ff88'][Math.floor(Math.random() * 5)],
+    color: ['#1B6FE0', '#5BC8F2', '#5BC8F2', '#fff', '#00ff88'][Math.floor(Math.random() * 5)],
     delay: `${Math.random() * 1.5}s`,
     size: Math.random() * 8 + 4,
     shape: Math.random() > 0.5 ? '50%' : '2px',
@@ -73,7 +73,7 @@ export default function Contact() {
   }, [confetti]);
 
   return (
-    <section id="contact" className="section-padding adinkra-bg" style={{ background: '#0c1a3e' }}>
+    <section id="contact" className="section-padding adinkra-bg" style={{ background: '#0A1650' }}>
       <Confetti active={confetti} />
       <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}
@@ -83,7 +83,7 @@ export default function Contact() {
           viewport={{ once: true }}
           style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
-          <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.8rem', color: '#00A3FF', letterSpacing: '0.2em', display: 'block', marginBottom: 12 }}>
+          <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.8rem', color: '#5BC8F2', letterSpacing: '0.2em', display: 'block', marginBottom: 12 }}>
             // CONTACT
           </span>
           <h2 className="section-title">Démarrons votre projet</h2>
@@ -108,8 +108,8 @@ export default function Contact() {
                   animate={{ opacity: 1, scale: 1 }}
                   style={{
                     textAlign: 'center', padding: '4rem 2rem',
-                    background: 'rgba(26,107,255,0.08)',
-                    border: '1px solid rgba(0,163,255,0.3)',
+                    background: 'rgba(27,111,224,0.08)',
+                    border: '1px solid rgba(91,200,242,0.3)',
                     borderRadius: 20,
                   }}
                 >
@@ -118,12 +118,12 @@ export default function Contact() {
                     transition={{ duration: 0.6 }}
                     style={{ marginBottom: '1.5rem' }}
                   >
-                    <CheckCircle size={64} color="#00A3FF" style={{ margin: '0 auto' }} />
+                    <CheckCircle size={64} color="#5BC8F2" style={{ margin: '0 auto' }} />
                   </motion.div>
-                  <h3 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '1.5rem', color: '#E8F4FF', marginBottom: '1rem' }}>
+                  <h3 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '1.5rem', color: '#FFFFFF', marginBottom: '1rem' }}>
                     Message envoyé ! 🎉
                   </h3>
-                  <p style={{ fontFamily: 'Inter', color: 'rgba(232,244,255,0.7)', lineHeight: 1.7 }}>
+                  <p style={{ fontFamily: 'Inter', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>
                     Merci pour votre message. Notre équipe vous contactera dans les 24 heures.
                   </p>
                   <motion.button
@@ -142,8 +142,8 @@ export default function Contact() {
                   animate={{ opacity: 1 }}
                   onSubmit={handleSubmit(onSubmit)}
                   style={{
-                    background: 'rgba(26,107,255,0.06)',
-                    border: '1px solid rgba(26,107,255,0.2)',
+                    background: 'rgba(27,111,224,0.06)',
+                    border: '1px solid rgba(27,111,224,0.2)',
                     borderRadius: 20, padding: '2.5rem',
                     display: 'flex', flexDirection: 'column', gap: '1.25rem',
                   }}
@@ -207,13 +207,13 @@ export default function Contact() {
                     className="form-input"
                     style={{ cursor: 'pointer' }}
                   >
-                    <option value="" style={{ background: '#0c1a3e' }}>Type de projet</option>
-                    <option value="web" style={{ background: '#0c1a3e' }}>Développement Web</option>
-                    <option value="mobile" style={{ background: '#0c1a3e' }}>Application Mobile</option>
-                    <option value="secu" style={{ background: '#0c1a3e' }}>Cybersécurité</option>
-                    <option value="ia" style={{ background: '#0c1a3e' }}>Intelligence Artificielle</option>
-                    <option value="cloud" style={{ background: '#0c1a3e' }}>Cloud & Infrastructure</option>
-                    <option value="autre" style={{ background: '#0c1a3e' }}>Autre</option>
+                    <option value="" style={{ background: '#0A1650' }}>Type de projet</option>
+                    <option value="web" style={{ background: '#0A1650' }}>Développement Web</option>
+                    <option value="mobile" style={{ background: '#0A1650' }}>Application Mobile</option>
+                    <option value="secu" style={{ background: '#0A1650' }}>Cybersécurité</option>
+                    <option value="ia" style={{ background: '#0A1650' }}>Intelligence Artificielle</option>
+                    <option value="cloud" style={{ background: '#0A1650' }}>Cloud & Infrastructure</option>
+                    <option value="autre" style={{ background: '#0A1650' }}>Autre</option>
                   </select>
 
                   {/* Message */}
@@ -263,25 +263,25 @@ export default function Contact() {
             style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
           >
             <div>
-              <h3 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '1.3rem', color: '#E8F4FF', marginBottom: '0.75rem' }}>
+              <h3 style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: '1.3rem', color: '#FFFFFF', marginBottom: '0.75rem' }}>
                 Parlons de votre vision
               </h3>
-              <p style={{ fontFamily: 'Inter', color: 'rgba(232,244,255,0.65)', lineHeight: 1.7 }}>
+              <p style={{ fontFamily: 'Inter', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7 }}>
                 Que vous ayez un projet défini ou une simple idée, notre équipe est là pour vous guider vers la meilleure solution technologique.
               </p>
             </div>
 
             {[
-              { icon: MapPin, label: 'Adresse', value: 'Cocody, Abidjan, Côte d\'Ivoire', color: '#D4AF37', href: null },
-              { icon: Mail,   label: 'Email',   value: 'kubleai@gmail.com',                color: '#00A3FF', href: 'mailto:kubleai@gmail.com' },
+              { icon: MapPin, label: 'Adresse', value: 'Cocody, Abidjan, Côte d\'Ivoire', color: '#5BC8F2', href: null },
+              { icon: Mail,   label: 'Email',   value: 'kubleai@gmail.com',                color: '#5BC8F2', href: 'mailto:kubleai@gmail.com' },
             ].map((info) => {
               const Icon = info.icon;
               return (
                 <div key={info.label} style={{
                   display: 'flex', alignItems: 'flex-start', gap: '1rem',
                   padding: '1.25rem',
-                  background: 'rgba(26,107,255,0.06)',
-                  border: '1px solid rgba(26,107,255,0.15)',
+                  background: 'rgba(27,111,224,0.06)',
+                  border: '1px solid rgba(27,111,224,0.15)',
                   borderRadius: 12,
                 }}>
                   <div style={{
@@ -294,15 +294,15 @@ export default function Contact() {
                     <Icon size={18} color={info.color} />
                   </div>
                   <div>
-                    <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '0.85rem', color: 'rgba(232,244,255,0.5)', marginBottom: 2 }}>
+                    <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', marginBottom: 2 }}>
                       {info.label}
                     </div>
                     {info.href ? (
-                      <a href={info.href} style={{ fontFamily: 'Inter', fontSize: '0.95rem', color: '#E8F4FF', textDecoration: 'none' }}>
+                      <a href={info.href} style={{ fontFamily: 'Inter', fontSize: '0.95rem', color: '#FFFFFF', textDecoration: 'none' }}>
                         {info.value}
                       </a>
                     ) : (
-                      <div style={{ fontFamily: 'Inter', fontSize: '0.95rem', color: '#E8F4FF' }}>{info.value}</div>
+                      <div style={{ fontFamily: 'Inter', fontSize: '0.95rem', color: '#FFFFFF' }}>{info.value}</div>
                     )}
                   </div>
                 </div>
@@ -313,8 +313,8 @@ export default function Contact() {
             <div style={{
               display: 'flex', alignItems: 'flex-start', gap: '1rem',
               padding: '1.25rem',
-              background: 'rgba(26,107,255,0.06)',
-              border: '1px solid rgba(26,107,255,0.15)',
+              background: 'rgba(27,111,224,0.06)',
+              border: '1px solid rgba(27,111,224,0.15)',
               borderRadius: 12,
             }}>
               <div style={{
@@ -327,7 +327,7 @@ export default function Contact() {
                 <Phone size={18} color="#25D366" />
               </div>
               <div>
-                <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '0.85rem', color: 'rgba(232,244,255,0.5)', marginBottom: 6 }}>
+                <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', marginBottom: 6 }}>
                   WhatsApp
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -361,18 +361,18 @@ export default function Contact() {
             {/* Map placeholder */}
             <div style={{
               height: 160, borderRadius: 14,
-              background: 'linear-gradient(135deg, rgba(26,107,255,0.1), rgba(0,163,255,0.05))',
-              border: '1px solid rgba(26,107,255,0.2)',
+              background: 'linear-gradient(135deg, rgba(27,111,224,0.1), rgba(91,200,242,0.05))',
+              border: '1px solid rgba(27,111,224,0.2)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               flexDirection: 'column', gap: 8, position: 'relative', overflow: 'hidden',
             }}>
               <div style={{ fontSize: '2.5rem' }}>🗺️</div>
-              <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.75rem', color: 'rgba(232,244,255,0.4)' }}>
+              <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)' }}>
                 Abidjan, Côte d'Ivoire
               </span>
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0, height: 3,
-                background: 'linear-gradient(90deg, #1A6BFF, #00A3FF, #D4AF37)',
+                background: 'linear-gradient(90deg, #1B6FE0, #5BC8F2, #5BC8F2)',
               }} />
             </div>
           </motion.div>
