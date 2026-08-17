@@ -350,7 +350,7 @@ export default function Technologie() {
             </p>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '1.5rem' }}>
             {services.map((svc, i) => (
               <ServiceCardItem key={i} svc={svc} index={i} />
             ))}
@@ -401,7 +401,7 @@ export default function Technologie() {
             </h2>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '1.5rem' }}>
             {[
               { img: '/mairie.jpeg', title: 'MaMairie', tag: 'React · Mobile · Services publics', link: 'https://mamairieci.netlify.app/' },
               { img: '/app.png', title: 'Eglise CTF', tag: 'Web · Mobile · Gestion', link: 'https://eglisectf.org/' },

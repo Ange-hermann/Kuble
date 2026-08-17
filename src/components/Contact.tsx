@@ -92,7 +92,7 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '3rem', alignItems: 'start' }}>
           {/* Form */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}

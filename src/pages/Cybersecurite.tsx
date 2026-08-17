@@ -683,7 +683,7 @@ export default function Cybersecurite() {
             </p>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '1.5rem' }}>
             {services.map((svc, i) => (
               <CyberServiceCard key={i} svc={svc} index={i} />
             ))}
@@ -733,7 +733,7 @@ export default function Cybersecurite() {
             </h2>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '1.5rem' }}>
             {[
               { img: CYBER_IMG.showcase1, title: 'SOC & Monitoring', tag: 'Détection · SIEM · Temps réel' },
               { img: CYBER_IMG.showcase2, title: 'Audit & Pentest', tag: 'Code review · SAST · DAST' },

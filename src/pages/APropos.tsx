@@ -117,6 +117,7 @@ function ValueCard({ icon: Icon, title, desc, index }: { icon: typeof Target; ti
 function AboutTimelineStep({ step, index }: { step: { year: string; title: string; desc: string }; index: number }) {
   return (
     <motion.div
+      className="about-timeline-step"
       initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-50px' }}
@@ -435,7 +436,7 @@ export default function APropos() {
         </svg>
 
         <div style={{ maxWidth: 1000, margin: '0 auto', position: 'relative', zIndex: 2 }}>
-          <div style={{
+          <div className="founder-grid" style={{
             display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '3rem',
             alignItems: 'center',
           }}>

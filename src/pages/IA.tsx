@@ -566,7 +566,7 @@ export default function IA() {
             </p>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(280px, 100%), 1fr))', gap: '1.5rem' }}>
             {services.map((svc, i) => (
               <IAServiceCard key={svc.title} svc={svc} index={i} />
             ))}

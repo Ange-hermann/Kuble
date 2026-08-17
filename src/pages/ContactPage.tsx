@@ -240,7 +240,7 @@ export default function ContactPage() {
         <BreathingHalo x="80%" y="20%" size={400} color={COLORS.cyanGlow} delay={2} />
 
         <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 2 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '3rem', alignItems: 'start' }}>
 
             {/* Form — light glassmorphism */}
             <motion.div

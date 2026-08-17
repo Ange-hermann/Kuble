@@ -180,7 +180,7 @@ export default function ServicePageTemplate({ config }: { config: ServicePageCon
             </h2>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '1.5rem' }}>
             {config.features.map((feat, i) => {
               const FeatureIcon = feat.icon;
               return (

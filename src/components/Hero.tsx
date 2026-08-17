@@ -120,7 +120,7 @@ export default function Hero() {
       <div style={{
         maxWidth: 1280, margin: '0 auto', padding: '6rem 2rem 4rem',
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
         gap: '4rem',
         alignItems: 'center',
         width: '100%',
