@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { useForm } from 'react-hook-form';
-import { Send, MapPin, Mail, Phone, CheckCircle, ChevronDown, ArrowRight, MessageSquare, Clock, Zap } from 'lucide-react';
+import { Send, MapPin, Mail, Phone, CheckCircle, ChevronDown, ArrowRight, MessageSquare, Zap } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { COLORS, FONTS } from '../theme/colors';
 

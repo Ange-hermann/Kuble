@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, Smartphone, Code2, Layers, Zap, Rocket, ChevronDown } from 'lucide-react';
@@ -50,37 +50,6 @@ function AuroraBg() {
         }}
       />
     </div>
-  );
-}
-
-// ─── Node network SVG ───
-function NodeNetwork({ mouseX, mouseY }: { mouseX: number; mouseY: number }) {
-  const nodes = [
-    { x: 80, y: 60 }, { x: 200, y: 120 }, { x: 340, y: 80 },
-    { x: 150, y: 200 }, { x: 300, y: 220 }, { x: 420, y: 160 },
-    { x: 100, y: 300 }, { x: 260, y: 340 }, { x: 400, y: 280 },
-  ];
-  return (
-    <svg width="500" height="400" viewBox="0 0 500 400" style={{
-      position: 'absolute', right: '2%', top: '50%',
-      transform: `translateY(-50%) translateX(${mouseX * 15}px) translateY(${mouseY * 10}px)`,
-      opacity: 0.5, pointerEvents: 'none',
-    }}>
-      {nodes.map((n, i) => nodes.slice(i + 1).map((m, j) => {
-        const dist = Math.hypot(n.x - m.x, n.y - m.y);
-        if (dist > 180) return null;
-        return <line key={`${i}-${j}`} x1={n.x} y1={n.y} x2={m.x} y2={m.y} stroke={COLORS.cyan} strokeWidth="0.5" opacity={0.15} />;
-      }))}
-      {nodes.map((n, i) => (
-        <g key={i}>
-          <motion.circle cx={n.x} cy={n.y} r="4" fill={COLORS.cyan}
-            animate={{ opacity: [0.3, 0.8, 0.3], r: [3, 5, 3] }}
-            transition={{ duration: 3, repeat: Infinity, delay: i * 0.3 }}
-          />
-          <circle cx={n.x} cy={n.y} r="8" fill="none" stroke={COLORS.cyan} strokeWidth="0.5" opacity={0.2} />
-        </g>
-      ))}
-    </svg>
   );
 }
 
@@ -228,22 +197,9 @@ function TechBadge({ tech, index }: { tech: string; index: number }) {
 // ═══════════════════════════════════════════════════════════
 export default function Technologie() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const [mouseX, setMouseX] = useState(0);
-  const [mouseY, setMouseY] = useState(0);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      if (!heroRef.current) return;
-      const rect = heroRef.current.getBoundingClientRect();
-      setMouseX((e.clientX - rect.left) / rect.width - 0.5);
-      setMouseY((e.clientY - rect.top) / rect.height - 0.5);
-    };
-    window.addEventListener('mousemove', onMove);
-    return () => window.removeEventListener('mousemove', onMove);
-  }, []);
 
   const services: ServiceCard[] = [
     { icon: Globe, title: 'Sites Web & E-commerce', desc: 'Sites vitrine, boutiques en ligne, portails corporate — optimises SEO, rapides et responsive.', img: IMG.web },
